@@ -1,0 +1,9 @@
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\bin\Debug\netstandard2.1\CalculatorLib.deps.json
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\bin\Debug\netstandard2.1\CalculatorLib.dll
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\bin\Debug\netstandard2.1\CalculatorLib.pdb
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\obj\Debug\netstandard2.1\CalculatorLib.csprojAssemblyReference.cache
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\obj\Debug\netstandard2.1\CalculatorLib.AssemblyInfoInputs.cache
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\obj\Debug\netstandard2.1\CalculatorLib.AssemblyInfo.cs
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\obj\Debug\netstandard2.1\CalculatorLib.csproj.CoreCompileInputs.cache
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\obj\Debug\netstandard2.1\CalculatorLib.dll
+C:\Users\fazal\GitHub\Eng-65\Calculator2\CalculatorLib\obj\Debug\netstandard2.1\CalculatorLib.pdb

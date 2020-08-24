@@ -1,0 +1,178 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Height="500" Width="500" ResizeMode="CanMinimize" Background="#303030">
+
+    <Window.Resources>
+
+        <Style TargetType="Button" x:Key="Base">
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    
+                    <ControlTemplate TargetType="Button">
+                        
+                        <Border Name="Border" CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Name="Content"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#f0f0f0"/>
+                                <Setter TargetName="Border" Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        
+                    </ControlTemplate>
+                    
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="28"/>
+
+        </Style>
+        
+        <Style TargetType="Button" x:Key="Numerical" BasedOn="{StaticResource Base}">
+            
+            <Setter Property="Background" Value="#d98035"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#edbb91"/>
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
+
+        <Style TargetType="Button" x:Key="Operations" BasedOn="{StaticResource Base}">
+            
+            <Setter Property="Background" Value="#af3040"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#db8f98"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+        <Style TargetType="Button" x:Key="Other" BasedOn="{StaticResource Base}">
+            
+            <Setter Property="Background" Value="#2565e0"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#a3bdf0"/>
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0" Margin="0 0 0 5" Background="#656565">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="EntryTextBlock" Grid.Column="0" Grid.Row="0" Margin="4"
+                       Foreground="#00ff50" FontSize="36" TextAlignment="Right" VerticalAlignment="Center"
+                       Text="{Binding Input, Mode=OneWay}"/>
+
+            <TextBlock x:Name="ResultTextBlock" Grid.Column="0" Grid.Row="1" Margin="4"
+                       Foreground="#00ff50" FontSize="40" TextAlignment="Right" VerticalAlignment="Center"
+                       Text="{Binding Output, Mode=OneWay}"/>
+            
+        </Grid>
+
+        <Grid Margin="0 5 0 0" Grid.Column="0" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="SevenBtn" Style="{StaticResource Numerical}"
+                    Content="7" Grid.Row="0" Grid.Column="0"/>
+            <Button x:Name="EightBtn" Style="{StaticResource Numerical}"
+                    Content="8" Grid.Row="0" Grid.Column="1"/>
+            <Button x:Name="NineBtn" Style="{StaticResource Numerical}"
+                    Content="9" Grid.Row="0" Grid.Column="2"/>
+
+            <Button x:Name="FourBtn" Style="{StaticResource Numerical}"
+                    Content="4" Grid.Row="1" Grid.Column="0"/>
+            <Button x:Name="FiveBtn" Style="{StaticResource Numerical}"
+                    Content="5" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="SixBtn" Style="{StaticResource Numerical}"
+                    Content="6" Grid.Row="1" Grid.Column="2"/>
+
+            <Button x:Name="OneBtn" Style="{StaticResource Numerical}"
+                    Content="1" Grid.Row="2" Grid.Column="0"/>
+            <Button x:Name="TwoBtn" Style="{StaticResource Numerical}"
+                    Content="2" Grid.Row="2" Grid.Column="1"/>
+            <Button x:Name="ThreeBtn" Style="{StaticResource Numerical}"
+                    Content="3" Grid.Row="2" Grid.Column="2"/>
+
+            <Button x:Name="PointBtn" Style="{StaticResource Numerical}"
+                    Content="." Grid.Row="3" Grid.Column="0"/>
+            <Button x:Name="ZeroBtn" Style="{StaticResource Numerical}"
+                    Content="0" Grid.Row="3" Grid.Column="1"/>
+            <Button x:Name="AnsBtn" Style="{StaticResource Numerical}"
+                    Content="ANS" Grid.Row="3" Grid.Column="2"/>
+
+            <Button x:Name="MultiplyBtn" Style="{StaticResource Operations}"
+                    Content="×" Grid.Row="0" Grid.Column="3"/>
+            <Button x:Name="DivideBtn" Style="{StaticResource Operations}"
+                    Content="÷" Grid.Row="1" Grid.Column="3"/>
+            <Button x:Name="AddBtn" Style="{StaticResource Operations}"
+                    Content="+" Grid.Row="2" Grid.Column="3"/>
+            <Button x:Name="SubtractBtn" Style="{StaticResource Operations}"
+                    Content="−" Grid.Row="3" Grid.Column="3"/>
+
+            <Button x:Name="DeleteBtn" Style="{StaticResource Other}"
+                    Content="DEL" Grid.Row="0" Grid.Column="4"/>
+            <Button x:Name="ClearBtn" Style="{StaticResource Other}"
+                    Content="C" Grid.Row="0" Grid.Column="5"/>
+            <Button x:Name="OpenBracketBtn" Style="{StaticResource Other}"
+                    Content="(" Grid.Row="1" Grid.Column="4"/>
+            <Button x:Name="CloseBracketBtn" Style="{StaticResource Other}"
+                    Content=")" Grid.Row="1" Grid.Column="5"/>
+            <Button x:Name="PowerBtn" Style="{StaticResource Other}"
+                    Content="^" Grid.Row="2" Grid.Column="4"/>
+            <Button x:Name="SqrtBtn" Style="{StaticResource Other}"
+                    Content="√" Grid.Row="2" Grid.Column="5"/>
+            <Button x:Name="EqualsBtn" Style="{StaticResource Other}"
+                    Content="=" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

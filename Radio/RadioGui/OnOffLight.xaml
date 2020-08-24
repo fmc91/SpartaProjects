@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Radio.OnOffLight"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Radio"
+             mc:Ignorable="d"
+             x:Name="UserControlRoot"
+             d:DesignHeight="40" d:DesignWidth="40">
+
+    <UserControl.Resources>
+        <Style x:Key="Light" TargetType="Ellipse">
+
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Fill" Value="DarkRed"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=UserControlRoot, Path=IsOn}" Value="True">
+
+                    <Setter Property="Fill" Value="Red"/>
+
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="Red"/>
+                        </Setter.Value>
+                    </Setter>
+                    
+                </DataTrigger>
+            </Style.Triggers>
+            
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Ellipse Style="{StaticResource Light}" Width="30" Height="30"/>
+
+    </Grid>
+</UserControl>

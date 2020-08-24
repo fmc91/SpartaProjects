@@ -1,0 +1,175 @@
+﻿<Window x:Class="Radio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Radio"
+        xmlns:xt="clr-namespace:Radio.MarkupExtensions"
+        mc:Ignorable="d"
+        Title="Radio" Height="350" Width="500" ResizeMode="CanMinimize"
+        Background="Black">
+
+    <Window.Resources>
+        
+        <Style x:Key="OnOffButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="OnOffButtonBorder" Width="64" Height="64" Background="#e3e3e3" CornerRadius="5"
+                                BorderBrush="Transparent" BorderThickness="2">
+                            <Grid>
+                                <Path Stroke="Green" StrokeThickness="5" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+                                      Data="M 20,13 A 20,20 0 1 0 40,13"/>
+                                <Line Stroke="Green" StrokeThickness="5" StrokeStartLineCap="Round" StrokeEndLineCap="Round"
+                                      X1="30" Y1="8" X2="30" Y2="25"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="OnOffButtonBorder" Property="BorderBrush" Value="#79d1f2"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="OnOffButtonBorder" Property="Background" Value="#d1d1d1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StationSelector" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        
+                        <Grid >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Ellipse x:Name="SelectorButton" Grid.Row="0" Margin="0 0 0 4" Width="45" Height="45" Fill="#e3e3e3"
+                                     Stroke="Transparent" StrokeThickness="2"/>
+
+                            <ContentPresenter Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="SelectorButton" Property="Stroke" Value="#79d1f2"/>
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="SelectorButton" Property="Stroke" Value="White"/>
+                                <Setter TargetName="SelectorButton" Property="StrokeThickness" Value="4"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="SelectorButton" Property="Fill" Value="#d1d1d1"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <local:IntConverter x:Key="IntConverter"/>
+
+    </Window.Resources>
+    
+    <Border Margin="5" Padding="25" CornerRadius="15">
+        
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#c6cacf" Offset="0"/>
+                <GradientStop Color="#97a2b0" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        
+        <StackPanel>
+            
+            <!-- TOP PANEL OF BUTTONS-->
+            
+            <Grid>
+            
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            
+                <Button Style="{StaticResource OnOffButton}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top"
+                        Command="{Binding OnOffToggleCommand}"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0 10 0 0"
+                            HorizontalAlignment="Center">
+                    
+                    <RadioButton Style="{StaticResource StationSelector}" Content="1" VerticalContentAlignment="Center"
+                                 FontSize="22" FontWeight="SemiBold" Margin="20 0"
+                                 IsChecked="{Binding Channel, Converter={StaticResource IntConverter}, ConverterParameter={xt:Int32 0}, Mode=TwoWay}"/>
+                    
+                    <RadioButton Style="{StaticResource StationSelector}" Content="2" VerticalContentAlignment="Center"
+                                 FontSize="22" FontWeight="SemiBold" Margin="20 0"
+                                 IsChecked="{Binding Channel, Converter={StaticResource IntConverter}, ConverterParameter={xt:Int32 1}, Mode=TwoWay}"/>
+                    
+                    <RadioButton Style="{StaticResource StationSelector}" Content="3" VerticalContentAlignment="Center"
+                                 FontSize="22" FontWeight="SemiBold" Margin="20 0"
+                                 IsChecked="{Binding Channel, Converter={StaticResource IntConverter}, ConverterParameter={xt:Int32 2}, Mode=TwoWay}"/>
+                    
+                    <RadioButton Style="{StaticResource StationSelector}" Content="4" VerticalContentAlignment="Center"
+                                 FontSize="22" FontWeight="SemiBold" Margin="20 0"
+                                 IsChecked="{Binding Channel, Converter={StaticResource IntConverter}, ConverterParameter={xt:Int32 3}, Mode=TwoWay}"/>
+                </StackPanel>
+
+            </Grid>
+            
+            <!-- DISPLAY AREA -->
+
+            <Border Margin="40 20" Padding="5" CornerRadius="8">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#363636" Offset="0"/>
+                        <GradientStop Color="Black" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <TextBlock FontSize="36" Foreground="LimeGreen" TextAlignment="Center"
+                           Text="{Binding Message}">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="0" Color="LimeGreen"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+            </Border>
+
+            <!-- SLIDER AND LIGHT -->
+            
+            <Grid Margin="0 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Slider Grid.Column="0" Margin="30 0" VerticalAlignment="Center"
+                        Maximum="100" Value="{Binding Volume, Mode=TwoWay}"/>
+
+                <local:OnOffLight Grid.Column="1" Margin="5" IsOn="{Binding On}"/>
+            </Grid>
+
+        </StackPanel>
+
+    </Border>
+</Window>

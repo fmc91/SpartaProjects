@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3NTS/T1wlQ24szerWUv52cXat/pKwTOs16Mew63v990zCAvD0PTGLMCs4oMTXqVfyU7+CbGro79uxMVNU9v5Qg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fazal\\Sparta\\Eng-65\\RadioApp\\RadioApp\\RadioApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fazal\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\fazal\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
