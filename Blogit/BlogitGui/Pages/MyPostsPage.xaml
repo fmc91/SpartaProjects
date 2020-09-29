@@ -1,0 +1,97 @@
+﻿<Page x:Class="BlogitGui.MyPostsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BlogitGui"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="My Posts"
+      WindowTitle="BlogIt - My Posts"
+      Background="{StaticResource BookshelfBackgroundBrush}"
+      ShowsNavigationUI="False">
+
+    <Page.Resources>
+        <Style x:Key="PostTitleStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="PostDateStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="PostContentStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:MenuBar Grid.Row="0" Username="{Binding LoggedInUser}"
+                       HomeButtonClick="HomeButtonClick"
+                       NewPostButtonClick="NewPostButtonClick"
+                       MyPostsButtonClick="MyPostsButtonClick"
+                       ProfileButtonClick="ProfileButtonClick"
+                       LogoutButtonClick="LogoutButtonClick"/>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.75"/>
+            </Grid.Background>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+
+                <ItemsControl ItemsSource="{Binding UserPosts}">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border MaxWidth="750" Margin="8" Padding="10" CornerRadius="10" Background="{StaticResource CardBackgroundBrush}">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Style="{StaticResource PostTitleStyle}" Grid.Column="0" Text="{Binding Title}"/>
+                                        <TextBlock Style="{StaticResource PostDateStyle}" Grid.Column="1"
+                                                   Text="{Binding Date, Converter={StaticResource DateConverter}}"/>
+                                    </Grid>
+                                    <TextBlock Style="{StaticResource PostContentStyle}" Text="{Binding Content}"/>
+                                    <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Width="100" Content="Edit"
+                                            Tag="{Binding PostId}" Click="EditButtonClick"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  
+                </ItemsControl>
+                
+            </ScrollViewer>
+            
+        </Grid>
+
+    </Grid>
+</Page>

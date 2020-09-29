@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\bookshelf.jpg" />
+    <None Remove="images\homeicon.png" />
+    <None Remove="images\logo.png" />
+    <None Remove="images\mypostsicon.png" />
+    <None Remove="images\posticon.png" />
+    <None Remove="images\profileicon.png" />
+    <None Remove="images\searchicon.png" />
+    <None Remove="images\signouticon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlogitCrud\BlogitCrud.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\bookshelf.jpg" />
+    <Resource Include="images\homeicon.png" />
+    <Resource Include="images\logo.png" />
+    <Resource Include="images\mypostsicon.png" />
+    <Resource Include="images\posticon.png" />
+    <Resource Include="images\profileicon.png" />
+    <Resource Include="images\searchicon.png" />
+    <Resource Include="images\signouticon.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\bin\Debug\netcoreapp3.1\BlogitCrud.deps.json
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\bin\Debug\netcoreapp3.1\BlogitCrud.dll
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\bin\Debug\netcoreapp3.1\BlogitCrud.pdb
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\bin\Debug\netcoreapp3.1\BlogitEntityModel.dll
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\bin\Debug\netcoreapp3.1\BlogitEntityModel.pdb
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.csprojAssemblyReference.cache
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.AssemblyInfoInputs.cache
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.AssemblyInfo.cs
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.csproj.CoreCompileInputs.cache
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.csproj.CopyComplete
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.dll
+C:\Users\fazal\source\repos\EfGetStarted\BlogitCrud\obj\Debug\netcoreapp3.1\BlogitCrud.pdb

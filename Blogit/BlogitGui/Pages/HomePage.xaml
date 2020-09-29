@@ -1,0 +1,301 @@
+﻿<Page x:Class="BlogitGui.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BlogitGui"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Home"
+      WindowTitle="BlogIt - Home"
+      Background="{StaticResource BookshelfBackgroundBrush}"
+      ShowsNavigationUI="False">
+
+    <Page.Resources>
+
+        <Style x:Key="SearchBarStyle" BasedOn="{StaticResource RoundedTextBoxStyle}" TargetType="TextBox">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="SearchButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+
+                            <Ellipse x:Name="Circle" Width="45" Height="45" StrokeThickness="2" Stroke="Transparent">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush StartPoint="0.2,0.2" EndPoint="0.8,0.8">
+                                        <GradientStop Color="#4ac1cf" Offset="0"/>
+                                        <GradientStop Color="#32919c" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Circle" Property="Stroke" Value="#f9f9f9"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Circle" Property="Fill">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0.2,0.2" EndPoint="0.8,0.8">
+                                            <GradientStop Color="#5bdceb" Offset="0"/>
+                                            <GradientStop Color="#46b5c2" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Margin" Value="5 0"/>
+
+            <Setter Property="Content">
+                <Setter.Value>
+                    <Image Source="pack://application:,,,/images/searchicon.png" Width="30" Height="30"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style x:Key="PageHeading" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0 10"/>
+        </Style>
+
+        <Style x:Key="PostTitleStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="PostDateStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="AuthorStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="BlogNameStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="PostContentStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="BlogInfoNameStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        
+        <Style x:Key="BlogInfoAuthorStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="BlogAboutStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="BlogInfoLabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="BlogInfoStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:MenuBar Grid.Row="0" Username="{Binding LoggedInUser}"
+                       HomeButtonClick="HomeButtonClick"
+                       NewPostButtonClick="NewPostButtonClick"
+                       MyPostsButtonClick="MyPostsButtonClick"
+                       ProfileButtonClick="ProfileButtonClick"
+                       LogoutButtonClick="LogoutButtonClick"/>
+
+        <Grid Grid.Row="1">
+
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.75"/>
+            </Grid.Background>
+            
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <StackPanel>
+                    
+                    <!--#region SEARCH BAR-->
+                    
+                    <Grid MaxWidth="500" Margin="8">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Style="{StaticResource SearchBarStyle}" Grid.Column="0" HorizontalAlignment="Stretch"/>
+                        <Button Style="{StaticResource SearchButtonStyle}" Grid.Column="1"/>
+
+                    </Grid>
+                    
+                    <!--#endregion-->
+                    
+                    <!--#region RECENTLY ACTIVE BLOGS-->
+
+                    <Border MaxWidth="850" Margin="8" CornerRadius="8">
+
+                        <Border.Background>
+                            <SolidColorBrush Color="#e9e9e9" Opacity="0.5"/>
+                        </Border.Background>
+                        <ScrollViewer Margin="8 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+
+                            <ItemsControl ItemsSource="{Binding RecentlyActiveBlogs}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Center"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Border Width="240" Height="280" Margin="5" Padding="8" CornerRadius="8"
+                                        Background="{StaticResource CardBackgroundBrush}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock Style="{StaticResource BlogInfoNameStyle}" Grid.Row="0"
+                                                           Text="{Binding Name}"/>
+                                                <TextBlock Style="{StaticResource BlogAboutStyle}" Grid.Row="1" MaxHeight="160"
+                                                           Text="{Binding About}"/>
+
+                                                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                                    <TextBlock Style="{StaticResource BlogInfoLabelStyle}" Text="Active since:"/>
+                                                    <TextBlock Style="{StaticResource BlogInfoStyle}"
+                                                               Text="{Binding ActiveSince, StringFormat=d, ConverterCulture=en-GB}"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="3">
+                                                    <TextBlock Style="{StaticResource BlogInfoLabelStyle}" Text="Number of posts:"/>
+                                                    <TextBlock Style="{StaticResource BlogInfoStyle}" Text="{Binding PostCount}"/>
+                                                </StackPanel>
+                                                <Button Style="{StaticResource ButtonStyle}" Grid.Row="5" Width="160" Content="View"
+                                                        Tag="{Binding BlogId}"
+                                                        Click="ViewBlogButtonClick"/>
+                                            </Grid>
+                                        </Border>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                    </Border>
+                    
+                    <!--#endregion-->
+    
+                    <!--#region RECENT POSTS-->
+                    
+                    <ItemsControl ItemsSource="{Binding RecentPosts}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="850" Margin="8" Padding="10" CornerRadius="10" Background="{StaticResource CardBackgroundBrush}">
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Style="{StaticResource BlogNameStyle}" Grid.Column="0" Text="{Binding BlogName}"/>
+                                            <TextBlock Style="{StaticResource PostDateStyle}" Grid.Column="1"
+                                                       Text="{Binding Date, Converter={StaticResource DateConverter}}"/>
+                                        </Grid>
+
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Style="{StaticResource PostTitleStyle}" Grid.Column="0" Text="{Binding Title}"/>
+                                            <TextBlock Style="{StaticResource AuthorStyle}" Grid.Column="1" Text="{Binding Author}"/>
+                                        </Grid>
+                                        
+                                        <TextBlock Style="{StaticResource PostContentStyle}" Text="{Binding Content}"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                    <!--#endregion-->
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Page>
